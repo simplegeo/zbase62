@@ -6,8 +6,9 @@
 
 import glob, os, re, sys
 
-egg = os.path.realpath(glob.glob('darcsver-*.egg')[0])
-sys.path.insert(0, egg)
+eggs = glob.glob('darcsver-*.egg')
+for egg in eggs:
+    sys.path.insert(0, os.path.realpath(egg))
 
 try:
     from ez_setup import use_setuptools
