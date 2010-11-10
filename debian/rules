@@ -45,7 +45,7 @@ install: build-stamp
 
 binary-arch: $(maybe_check)
 binary-indep: $(maybe_check) install
-	dh_installdocs README
+	dh_installdocs README.txt
 	dh_installchangelogs
 	dh_compress
 	dh_fixperms
