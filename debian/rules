@@ -1,0 +1,60 @@
+#!/usr/bin/make -f
+
+# Verbose mode
+#export DH_VERBOSE=1
+
+clean:
+	dh_testdir
+	dh_testroot
+	
+	rm -f build-stamp check-stamp install-stamp
+	rm -rf build
+	find zbase62/ -name *.pyc | xargs rm -f
+	
+	dh_clean
+
+build: build-stamp
+build-stamp:
+	dh_testdir
+
+	python setup.py build
+
+	touch build-stamp
+
+check: check-stamp
+check-stamp:
+	-zbase62/test/test_zbase62.py
+	>$@
+
+maybe_check = $(if $(findstring nocheck,$(DEB_BUILD_OPTIONS)),,check)
+
+install: build-stamp
+	dh_testdir
+	dh_installdirs
+
+	python setup.py install --root $(CURDIR)/debian/python-zbase62 \
+		--install-scripts usr/share/doc/python-zbase62/examples/
+
+	for f in `find $(CURDIR)/debian/python-zbase62 -name \*.py`; do \
+	    sed -e '\,^#!/usr/bin/env python,d' < $$f > $$f.tmp; \
+	    mv $$f.tmp $$f; \
+	done
+
+	touch install-stamp
+	
+
+binary-arch: $(maybe_check)
+binary-indep: $(maybe_check) install
+	dh_installdocs README
+	dh_installchangelogs
+	dh_compress
+	dh_fixperms
+	dh_pysupport
+	dh_gencontrol
+	dh_installdeb
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-arch binary-indep
+.PHONY: build clean binary-indep binary-arch binary
+

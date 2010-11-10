@@ -1,0 +1,18 @@
+Source: python-zbase62
+Section: python
+Priority: optional
+Maintainer: Ubuntu Developers <ubuntu-devel@lists.ubuntu.com>
+XSBC-Original-Maintainer: Eric Evans <eevans@debian.org>
+Build-Depends: debhelper (>= 7), python-support (>= 0.6)
+Homepage: http://tahoe-lafs.org/trac/zbase62
+XS-Debian-Vcs-Darcs: http://tahoe-lafs.org/source/zbase62/trunk
+XS-Debian-Vcs-Browser: http://tahoe-lafs.org/trac/zbase62/browser/trunk
+Standards-Version: 3.8.3
+
+Package: python-zbase62
+Architecture: all
+Depends: ${python:Depends}, ${misc:Depends}
+Provides: ${python:Provides}, ${misc:Depends}
+XB-Python-Version: ${python:Versions}
+Description: encode data into base-62 encoding
+ .
