@@ -10,6 +10,13 @@ eggs = glob.glob('darcsver-*.egg')
 for egg in eggs:
     sys.path.insert(0, os.path.realpath(egg))
 
+try:
+    from ez_setup import use_setuptools
+except ImportError:
+    pass
+else:
+    use_setuptools(download_delay=0)
+
 from setuptools import find_packages, setup
 
 trove_classifiers=[
