@@ -9,8 +9,7 @@
 # from the Python Standard Library
 import string
 
-from pyutil.assertutil import _assert, precondition, postcondition
-from pyutil.mathutil import div_ceil, log_ceil, log_floor
+from pyutil.mathutil import log_ceil, log_floor
 
 chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
