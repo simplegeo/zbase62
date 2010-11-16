@@ -11,7 +11,7 @@ Standards-Version: 3.8.3
 
 Package: python-zbase62
 Architecture: all
-Depends: ${python:Depends}, ${misc:Depends}
+Depends: ${python:Depends}, ${misc:Depends}, python-pyutil
 Provides: ${python:Provides}, ${misc:Depends}
 XB-Python-Version: ${python:Versions}
 Description: encode data into base-62 encoding
