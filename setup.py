@@ -54,7 +54,7 @@ else:
         print "unable to find version in %s" % (VERSIONFILE,)
         raise RuntimeError("if %s.py exists, it must be well-formed" % (VERSIONFILE,))
 
-setup_requires = []
+setup_requires = ['pyutil']
 
 # darcsver is needed only if you want "./setup.py darcsver" to write a new
 # version stamp in zbase62/_version.py, with a version number derived from
@@ -86,7 +86,7 @@ setup(name=PKG,
       packages=find_packages(),
       include_package_data=True,
       setup_requires=setup_requires,
-      tests_require=['pyutil'],
+      tests_require=[],
       classifiers=trove_classifiers,
       test_suite=PKG+'.test',
       zip_safe=False, # I prefer unzipped for easier access.
